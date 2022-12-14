@@ -1,27 +1,36 @@
-import './App.css';
-import Todo from './components/Todo';
+import "./App.css";
 
-import FirebaseAuth from './auth';
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+import Todo from "./components/Todo";
+import TodoList from "./components/TodoList";
+
+import FirebaseAuth from "./auth";
 
 function App() {
+  const [todo, setTodo] = useState([]);
 
-  
-  
+  const fetchTodosData = async () => {
+    const res = await axios.get("/getTodos");
+    if (res.data.todos.length >= 0) {
+      setTodo(res.data.todos);
+    }
+  };
+
+  useEffect(() => {
+    fetchTodosData();
+  }, []);
+
   return (
     <div className="App">
       <>
-      <FirebaseAuth />
-    <Todo />
+        <FirebaseAuth />
+        <Todo fetchTodosData={fetchTodosData} />
+        <TodoList todosList={todo} fetchTodosData={fetchTodosData} />
       </>
     </div>
   );
 }
 
 export default App;
-
-
-
-
-
-
-
