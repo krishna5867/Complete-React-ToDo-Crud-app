@@ -6,8 +6,6 @@ import axios from "axios";
 import Todo from "./components/Todo";
 import TodoList from "./components/TodoList";
 
-const BASE_URL = "https://complete-react-todo-crud-app-production.up.railway.app";
-
 
 function App() {
   const [todo, setTodo] = useState([]);
@@ -27,7 +25,7 @@ function App() {
     <div className="App">
       <>
         <Todo fetchTodosData={fetchTodosData} />
-        <TodoList todosList={todo} fetchTodosData={BASE_URL} />
+        <TodoList todosList={todo} fetchTodosData={fetchTodosData} />
       </>
     </div>
   );
