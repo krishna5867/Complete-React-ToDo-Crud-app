@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Container, Card } from "reactstrap";
 
-const TodoList = (props) => {
+const TodoList = (props, {BASE_URL}) => {
   const handleEdit = async (todo) => {
     const todoTitle = prompt("Enter new Title");
     const todoTask = prompt("Enter new Task");
@@ -29,7 +29,7 @@ const TodoList = (props) => {
   };
 
   const taskCompleted = async (todo) => {
-    const res = await axios.put(`/taskCompleted/${todo._id}`);
+    const res = await axios.put(`{BASE_URL}/taskCompleted/${todo._id}`);
     console.log(res); 
   }
 

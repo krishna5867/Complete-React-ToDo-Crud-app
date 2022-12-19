@@ -5,13 +5,14 @@ import axios from "axios";
 
 import Todo from "./components/Todo";
 import TodoList from "./components/TodoList";
+const BASE_URL = "https://complete-react-todo-crud-app-production.up.railway.app";
 
 
 function App() {
   const [todo, setTodo] = useState([]);
 
   const fetchTodosData = async () => {
-    const res = await axios.get("/getTodos");
+    const res = await axios.get(`${BASE_URL}/getTodos`);
     if (res.data.todos.length >= 0) {
       setTodo(res.data.todos);
     }
@@ -24,8 +25,8 @@ function App() {
   return (
     <div className="App">
       <>
-        <Todo fetchTodosData={fetchTodosData} />
-        <TodoList todosList={todo} fetchTodosData={fetchTodosData} />
+        <Todo fetchTodosData={fetchTodosData} BASE_URL={BASE_URL}/>
+        <TodoList todosList={todo} BASE_URL={BASE_URL} />
       </>
     </div>
   );

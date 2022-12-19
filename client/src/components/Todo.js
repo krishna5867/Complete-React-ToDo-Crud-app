@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Container, Card, CardBody, Input } from "reactstrap";
 
-const Todo = (props) => {
+const Todo = (props, {BASE_URL}) => {
   const [title, setTitle] = useState("");
   const [tasks, setTasks] = useState("");
 
@@ -13,7 +13,7 @@ const Todo = (props) => {
         tasks: tasks,
       };
 
-      const res = await axios.post("/createTodo", todo);
+      const res = await axios.post(`${BASE_URL}/createTodo`, todo);
       if (res.data.success) {
         console.log("Title created successfully");
         setTitle("");
