@@ -2,6 +2,7 @@ import axios from "axios";
 import { Container, Card } from "reactstrap";
 
 const TodoList = (props, {BASE_URL}) => {
+  
   const handleEdit = async (todo) => {
     const todoTitle = prompt("Enter new Title");
     const todoTask = prompt("Enter new Task");
@@ -9,7 +10,7 @@ const TodoList = (props, {BASE_URL}) => {
     if (!todoTitle || !todoTask) {
       alert("Please enter both field");
     } else {
-      const res = await axios.put(`/editTodo/${todo._id}`, {
+      const res = await axios.put(`${BASE_URL}/editTodo/${todo._id}`, {
         ...todo,
         title: todoTitle,
         tasks: todoTask,
@@ -22,16 +23,16 @@ const TodoList = (props, {BASE_URL}) => {
   const handleDelete = async (todoId) => {
     const canDelete = window.confirm("Are your Sure?");
     if (canDelete) {
-      const res = await axios.delete(`/deleteTodo/${todoId}`);
+      const res = await axios.delete(`${BASE_URL}/deleteTodo/${todoId}`);
       console.log(res);
       props.fetchTodosData();
     }
   };
 
-  const taskCompleted = async (todo) => {
-    const res = await axios.put(`{BASE_URL}/taskCompleted/${todo._id}`);
-    console.log(res); 
-  }
+  // const taskCompleted = async (todo) => {
+  //   const res = await axios.put(`{BASE_URL}/taskCompleted/${todo._id}`);
+  //   console.log(res); 
+  // }
 
   return (
     <>

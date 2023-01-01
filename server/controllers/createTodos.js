@@ -83,16 +83,19 @@ exports.deleteTodo = async (req, res) => {
   }
 };
 
-exports.taskCompleted = async(req, res) => {
+exports.taskCompleted = async (req, res) => {
   const id = req.params.id;
-  const todoId=id.split("_");
+  const todoId = id.split("_");
 
   const todo = req.body.todo;
-  
-  const updateTodo = await Todo.findOneAndUpdate({_id:todoId}, { $set: { "todos.$.taskCompleted":true}});
+
+  const updateTodo = await Todo.findOneAndUpdate({ _id: todoId },
+    {
+      $set: { "todos.$.taskCompleted": true }
+    });
   res.status(201).json({
-      success:true,
-      message:"Task completed"
+    success: true,
+    message: "Task completed"
   })
 }
 
