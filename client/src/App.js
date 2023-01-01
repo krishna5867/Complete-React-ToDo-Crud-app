@@ -26,8 +26,14 @@ function App() {
   return (
     <div className="App">
       <>
-        <Todo fetchTodosData={fetchTodosData} BASE_URL={BASE_URL}/>
-        <TodoList todosList={todo} BASE_URL={BASE_URL} />
+        <Todo 
+        fetchTodosData={fetchTodosData} 
+        BASE_URL={BASE_URL}/>
+        <TodoList 
+        todo={todo} 
+        setTodo={setTodo} 
+        fetchTodosData={fetchTodosData} 
+        BASE_URL={BASE_URL} />
       </>
     </div>
   );

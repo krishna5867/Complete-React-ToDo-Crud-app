@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Container, Card } from "reactstrap";
 
-const TodoList = (props, {BASE_URL}) => {
+const TodoList = ({todosList, BASE_URL, fetchTodosData}) => {
   
   const handleEdit = async (todo) => {
     const todoTitle = prompt("Enter new Title");
@@ -16,7 +16,7 @@ const TodoList = (props, {BASE_URL}) => {
         tasks: todoTask,
       });
       console.log(res);
-      props.fetchTodosData();
+      fetchTodosData();
     }
   };
 
@@ -25,7 +25,7 @@ const TodoList = (props, {BASE_URL}) => {
     if (canDelete) {
       const res = await axios.delete(`${BASE_URL}/deleteTodo/${todoId}`);
       console.log(res);
-      props.fetchTodosData();
+      fetchTodosData();
     }
   };
 
@@ -53,8 +53,8 @@ const TodoList = (props, {BASE_URL}) => {
           {/* </CardBody> */}
         </Card>
       </Container>
-      {props.todosList && props.todosList.length > 0 ? (
-        props.todosList.map((todo) => (
+      {todosList && todosList.length > 0 ? (
+        todosList.map((todo) => (
           <Container key={todo._id}  style={{ width: "78rem" }}>
             <Card>
               {/* <CardBody> */}

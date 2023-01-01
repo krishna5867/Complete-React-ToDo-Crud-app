@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Container, Card, CardBody, Input } from "reactstrap";
 
-const Todo = (props, {BASE_URL}) => {
+const Todo = ({BASE_URL,fetchTodosData}) => {
   const [title, setTitle] = useState("");
   const [tasks, setTasks] = useState("");
 
@@ -18,7 +18,7 @@ const Todo = (props, {BASE_URL}) => {
         console.log("Title created successfully");
         setTitle("");
         setTasks("");
-        props.fetchTodosData();
+        fetchTodosData();
       }
     } catch (error) {
       console.log(error);
