@@ -29,11 +29,6 @@ const TodoList = ({todosList, BASE_URL, fetchTodosData}) => {
     }
   };
 
-  // const taskCompleted = async (todo) => {
-  //   const res = await axios.put(`{BASE_URL}/taskCompleted/${todo._id}`);
-  //   console.log(res); 
-  // }
-
   return (
     <>
       <Container  style={{ width: "78rem" }}>
