@@ -7,7 +7,7 @@ const app = express();
 
 const connectToDataBase = require("./config/db");
 
-const userRoute = require("./routes/userRoutes");
+const userRoute = require("./Routes/userRoutes");
 
 //middleware
 app.use(express.json());
