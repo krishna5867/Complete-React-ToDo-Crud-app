@@ -33,7 +33,7 @@ const Todo = ({BASE_URL,fetchTodosData}) => {
     if ((title || tasks) === "") {
       alert("Todo Field can't be Empty");
     } else {
-      console.log("data submittend");
+      console.log("");
     }
   };
 

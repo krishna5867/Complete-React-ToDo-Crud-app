@@ -29,6 +29,7 @@ function App() {
         <Todo 
         fetchTodosData={fetchTodosData} 
         BASE_URL={BASE_URL}/>
+        
         <TodoList 
         todo={todo} 
         setTodo={setTodo} 
